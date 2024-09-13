@@ -4,7 +4,7 @@
 
 /* brand color palette */
 :root {
-  --primary: rgba(139, 148, 185, 0.56);
+  --primary: rgba(34, 54, 138, 0.753);
   --secondary: rgb(153, 161, 192);
   --tertiary: rgb(39, 40, 43);
   --dark: rgb(0, 0, 0);
@@ -17,7 +17,7 @@ body {
   padding: 0;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   color: rgb(255, 255, 255);
-  background-color: var(--dark);
+  background-color: #FAF9F6;
   line-height: 1.5;
 }
 
@@ -180,7 +180,6 @@ main {
 }
 
 .page-section > div {
-  flex: 0 75%;
 }
 
 .page-section p {
@@ -221,7 +220,7 @@ main {
 }
 
 .flex-item:hover {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(53, 80, 190, 0.664);
 }
 
 .flex-item div {
@@ -345,4 +344,20 @@ main {
     align-items: flex-start;
   }
   
+}
+/*start of Bens CSS*/
+
+.abt-us {
+  text-align: center;
+  border: 2px solid var(--secondary);
+  background-color: var(--primary);
+  padding: 0 0 20px 0;
+  margin: 0.5em;
+    display: flex;
+  align-items: flex-end;
+  width: 50%;
+}
+
+.orng{
+  background-color: rgb(196, 139, 55);
 }
