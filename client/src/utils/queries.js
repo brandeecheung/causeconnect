@@ -1,4 +1,3 @@
-// src/utils/queries.js
 import { gql } from '@apollo/client';
 
 export const QUERY_CHARITIES = gql`
@@ -26,3 +25,18 @@ export const QUERY_DONATIONS = gql`
     }
   }
 `;
+
+export const GET_COMBINED_CHARITY_DATA = gql`
+  query getCombinedCharityData($charityId: ID!) {
+    combinedCharityData(charityId: $charityId) {
+      charityName
+      charityDescription
+      donations {
+        donorName
+        amount
+        donationDate
+      }
+    }
+  }
+`;
+

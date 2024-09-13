@@ -1,9 +1,8 @@
-// src/components/CharityList.js
 import { useQuery } from '@apollo/client';
 import { QUERY_CHARITIES } from '../utils/queries';
 
 function CharityList() {
-  const { loading, data } = useQuery(QUERY_CHARITIES);
+  const { data, loading } = useQuery(QUERY_CHARITIES);
 
   if (loading) return <p>Loading...</p>;
 
@@ -11,12 +10,13 @@ function CharityList() {
     <div>
       <h2>Charities</h2>
       <ul>
-        {data.charities.map((charity) => (
-          <li key={charity._id}>
-            <h3>{charity.name}</h3>
-            <p>{charity.description}</p>
-            <p>Goal: ${charity.goalAmount}</p>
-            <p>Raised: ${charity.amountRaised}</p>
+        {data.charities.map((charityData) => (
+          <li key={charityData._id}>
+            <h3>{charityData.name}</h3>
+            <p>{charityData.description}</p>
+            <p>
+              Goal: ${charityData.goalAmount} | Raised: ${charityData.amountRaised}
+            </p>
           </li>
         ))}
       </ul>
@@ -25,3 +25,4 @@ function CharityList() {
 }
 
 export default CharityList;
+

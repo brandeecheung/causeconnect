@@ -1,17 +1,20 @@
-// models/Charity.js
-import mongoose from 'mongoose';
+import { Schema, model } from 'mongoose';
 
-const charitySchema = new mongoose.Schema({
+const charitySchema = new Schema({
   name: {
     type: String,
     required: true,
   },
   description: String,
   goalAmount: Number,
-  amountRaised: Number,
-  category: String, // Example categories: Education, Health, Environment
+  amountRaised: {
+    type: Number,
+    default: 0,
+  },
+  category: String, // Example: Education, Health, Environment
 });
 
-export default mongoose.model('Charity', charitySchema);
+export default model('Charity', charitySchema);
+
 
 

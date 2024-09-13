@@ -1,16 +1,16 @@
-// src/App.js
+
 import { ApolloProvider, InMemoryCache, ApolloClient } from '@apollo/client';
-import CharityList from './components/CharityList'; // Example component
+import CharityList from './components/CharityList'; // Component that displays charities
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql',
+  uri: 'http://localhost:4000/graphql', // Replace with the appropriate backend URL
   cache: new InMemoryCache(),
 });
 
 function App() {
   return (
     <ApolloProvider client={client}>
-      <div className="App">
+      <div className="app">
         <CharityList />
       </div>
     </ApolloProvider>
@@ -18,4 +18,5 @@ function App() {
 }
 
 export default App;
+
 

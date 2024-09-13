@@ -1,11 +1,10 @@
-// models/Donation.js
-import mongoose from 'mongoose';
+import { Schema, model } from 'mongoose';
 
-const donationSchema = new mongoose.Schema({
+const donationSchema = new Schema({
   donorName: String,
   amount: Number,
   charity: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'Charity',
   },
   donationDate: {
@@ -14,4 +13,4 @@ const donationSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.model('Donation', donationSchema);
+export default model('Donation', donationSchema);
