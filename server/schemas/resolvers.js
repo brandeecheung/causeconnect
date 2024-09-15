@@ -1,6 +1,6 @@
-import { get } from 'axios';
-import Charity from '../models/Charity';
-import Donation from '../models/Donation';
+import get from 'axios';
+import Charity from '../models/Charity.js';
+import Donation from '../models/Donation.js';
 
 const resolvers = {
   Query: {
