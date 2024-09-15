@@ -1,6 +1,6 @@
-import { gql } from 'apollo-server-express';
+// import gql from '@apollo/client';
 
-const typeDefs = gql`
+const typeDefs = `
   type Charity {
     _id: ID!
     name: String!
