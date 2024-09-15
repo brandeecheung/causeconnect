@@ -1,7 +1,6 @@
-
 import { ApolloProvider, InMemoryCache, ApolloClient } from '@apollo/client';
-import CharityList from './components/CharityList'; // Component that displays charities
 import { Outlet } from 'react-router-dom';
+import Nav from './components/Nav';
 
 const client = new ApolloClient({
   uri: 'http://localhost:4000/graphql', // Replace with the appropriate backend URL
@@ -12,7 +11,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <div className="app">
-        {/* <CharityList /> */}
+        <Nav/>
         <Outlet />
       </div>
     </ApolloProvider>
