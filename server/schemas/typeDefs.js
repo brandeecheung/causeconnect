@@ -1,6 +1,20 @@
 // import gql from '@apollo/client';
 
 const typeDefs = `
+
+  type User {
+    _id: ID
+    username: String
+    email: String
+    password: String
+    thoughts: [Thought]!
+  }
+
+  type Auth {
+    token: ID!
+    user: User
+  }
+
   type Charity {
     _id: ID!
     name: String!
@@ -33,6 +47,8 @@ const typeDefs = `
   }
 
   type Mutation {
+    addUser(username: String!, email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
     addCharity(name: String!, description: String, goalAmount: Float, category: String): Charity
     addDonation(donorName: String!, amount: Float!, charityId: ID!): Donation
     updateCharity(_id: ID!, name: String, description: String, goalAmount: Float, amountRaised: Float, category: String): Charity
