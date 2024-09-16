@@ -1,7 +1,8 @@
 // This is a static page mocking an "About Us" section for our fake user data
 export default function Home() {
     return (
-      <section className="page-section" id="work">
+      <section className="page-section">
+        <h1 className="name">Cause Connect</h1>
         <div className="flex-container">
   
           <div className="abt-us">
@@ -30,25 +31,31 @@ export default function Home() {
             </div>
           </div>
   
-          <a href="https://brandeecheung.github.io/myblog/index.html" className="flex-item work1">
+        
+          <a href="https://brandeecheung.github.io/myblog/index.html" className="flex-item work1 donate">
             <div>
               <h3>Donate Now</h3>
             </div>
           </a>
+        
   
-          <a href="https://i1.wp.com/scng-dash.digitalfirstmedia.com/wp-content/uploads/2018/12/charity-stats.jpg" className="flex-item work2">
+          <a href="https://i1.wp.com/scng-dash.digitalfirstmedia.com/wp-content/uploads/2018/12/charity-stats.jpg" className="flex-item work2 impact">
             <div>
               <h3>Our Impact</h3>
             </div>
           </a>
   
-          <a href="https://www.google.com/search?client=opera-gx&hs=0DJ&sca_esv=de5534b79ca5d3d3&sca_upv=1&q=upcoming+charity+events&spell=1&sa=X&ved=2ahUKEwj78uiV0r6IAxVeMdAFHS2hHYQQBSgAegQIChAB&biw=1879&bih=936&dpr=1" className="flex-item work3">
+          <a href="https://www.google.com/search?client=opera-gx&hs=0DJ&sca_esv=de5534b79ca5d3d3&sca_upv=1&q=upcoming+charity+events&spell=1&sa=X&ved=2ahUKEwj78uiV0r6IAxVeMdAFHS2hHYQQBSgAegQIChAB&biw=1879&bih=936&dpr=1" className="flex-item work3 events">
             <div>
               <h3>Up Coming Events</h3>
             </div>
           </a>
   
         </div>
+
+        <footer>
+          <h3>Created by Scam Co. LLC. All donations will not actually go anywhere but our bank accounts. Thank you for your donations!</h3>
+        </footer>
       </section>
     );
   }
