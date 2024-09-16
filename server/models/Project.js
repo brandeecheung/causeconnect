@@ -2,60 +2,48 @@ import {Schema, model} from 'mongoose';
 
 const projectSchema = new Schema({
     projects: [{
-    active: { type: Boolean, required: true },
-    activities: { type: String, required: true },
-    additionalDocumentation: { type: String },
-    approvedDate: { type: Date },
-    contactInfo: [{
-        contactAddress: { type: String },
-        contactCity: { type: String },
-        contactCountry: { type: String },
-        contactName: { type: String },
-        contactPostal: { type: String },
-        contactState: { type: String },
-        contactTitle: { type: String },
-        contactUrl: { type: String },
+    active: Boolean, required: true,
+    activities: String, required: true,
+    additionalDocumentation: String,
+    approvedDate: Date, 
+    id: Number, unique: true,
+    funding: Number,
+    goal: Number,
+    longTermImpact: String,
+    progressReportLink: String,
+    projectLink: String,
+    remaining: Number,
+    status: String,
+    summary: String,
+    themeName: String,
+    themes: [{
+        id: String,
+        name: String
+    }],
+    title: String,
     }],
     donationOptions: [{
-        amount: { type: Number },
-        description: { type: String }
+        amount: Number,
+        description: String
     }],
-    funding: { type: Number },
-    goal: { type: Number },
-    id: { type: Number, unique: true },
-    imageGallerySize: { type: Number },
-    imageLink: { type: String },
+    imageGallerySize: Number,
+    imageLink: String,
     imageSizeOptions: [{
-        size: { type: String },
-        url: { type: String }
+        size: String,
+        url: String
     }],
-    longTermImpact: { type: String },
-    need: { type: String },
-    notice: { type: String },
-    numberOfDonations: { type: Number },
+    
     organization: {
-        addressLine1: { type: String },
-        city: { type: String },
-        country: { type: String },
-        id: { type: Number },
-        iso3166CountryCode: { type: String },
-        logoUrl: { type: String },
-        name: { type: String },
-        postal: { type: String },
-        url: { type: String }
+        addressLine1: String,
+        city: String,
+        country: String,
+        id: Number,
+        iso3166CountryCode: String,
+        logoUrl: String,
+        name: String,
+        postal: String,
+        url: String
     },
-    progressReportLink: { type: String },
-    projectLink: { type: String },
-    remaining: { type: Number },
-    status: { type: String },
-    summary: { type: String },
-    themeName: { type: String },
-    themes: [{
-        id: { type: String },
-        name: { type: String }
-    }],
-    title: { type: String },
-}]
 });
 
 export default model('Project', projectSchema);

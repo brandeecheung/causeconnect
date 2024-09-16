@@ -14,21 +14,6 @@ const globalGivingAPI = {
             throw error;
         }
     },
-
-    async fetchProjectDetails(projectId) {
-        try {
-            const response = await fetch(`${API_URL}projects/${projectId}`);
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            const data = await response.json();
-            return data;
-        } catch (error) {
-            console.error('Error fetching project details:', error);
-            throw error;
-        }
-    },
-
     async fetchAllOrganizations() {
         try {
             const response = await fetch(`${API_URL}orgservice/all/organizations/vetted/download?api_key=YOUR_API_KEY`);
