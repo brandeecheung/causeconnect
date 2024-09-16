@@ -3,7 +3,7 @@ import { gql } from '@apollo/client';
 export const QUERY_CHARITIES = gql`
   query getCharities($category: String) {
     charities(category: $category) {
-      _id
+      id
       name
       description
       goalAmount

@@ -20,7 +20,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 // Create Apollo Server
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({ typeDefs, resolvers, });
 
 server.start().then(() => {
   server.applyMiddleware({ app });

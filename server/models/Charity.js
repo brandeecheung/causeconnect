@@ -22,6 +22,3 @@ organizations: [{
 });
 
 export default model('Charity', charitySchema);
-
-
-

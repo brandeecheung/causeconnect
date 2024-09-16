@@ -2,11 +2,11 @@ import {Schema, model} from 'mongoose';
 
 const projectSchema = new Schema({
     projects: [{
-    active: Boolean, required: true,
-    activities: String, required: true,
+    active: Boolean,
+    activities: String,
     additionalDocumentation: String,
     approvedDate: Date, 
-    id: Number, unique: true,
+    id: Number,
     funding: Number,
     goal: Number,
     longTermImpact: String,
