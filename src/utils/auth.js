@@ -1,37 +1,17 @@
-import decode from 'jwt-decode';
+import { GraphQLError } from 'graphql';
+import jwt from 'jsonwebtoken';
 
-  class AuthService {
-  getProfile() {
-    return decode(this.getToken());
-  }
+const secret = 'mysecretssshhhhhhh';
+const expiration = '2h';
 
-  loggedIn() {
-    const token = this.getToken();
-    return token && !this.isTokenExpired(token) ? true : false;
-  }
+export const AuthenticationError = new GraphQLError('Could not authenticate user.', {
+  extensions: {
+    code: 'UNAUTHENTICATED',
+  },
+});
 
-  isTokenExpired(token) {
-    const decoded = decode(token);
-    if (decoded.exp < Date.now() / 10000) {
-      localStorage.removeItem('id_token');
-      return true;
-    }
-    return false;
-  }
+export function signToken({ email, name, _id }) {
+  const payload = { email, name, _id };
+  return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
+};
 
-  getToken() {
-    return localStorage.getItem('id_token');
-  }
-
-  login(idToken) {
-    localStorage.setItem('id_token', idToken);
-    window.location.assign('/');
-  }
-
-  logout() {
-    localStorage.removeItem('id_token');
-    window.location.reload();
-  }
-}
-
-export default new AuthService();

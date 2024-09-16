@@ -12,6 +12,7 @@ import Profile from './pages/Profile';
 import Contact from './pages/Contact';
 import Charities from './pages/Charities';
 import Donation from './pages/Donation';
+import Login from './pages/Login';
 
 // Define the accessible routes, and which components respond to which URL
 const router = createBrowserRouter([
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: 'profile',
         element: <Profile />,
+      },
+      {
+        path: 'login',
+        element: <Login />,
       },
       {
         path: 'charities',
