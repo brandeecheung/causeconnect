@@ -1,9 +1,9 @@
 import express from 'express';
-import { ApolloServer } from 'apollo-server-express';
+import { ApolloServer } from '@apollo/server';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import typeDefs from './schema/typeDefs.js';
-import resolvers from './schema/resolvers.js';
+import typeDefs from './schemas/typeDefs.js';
+import resolvers from './schemas/resolvers.js';
 
 // Load environment variables
 dotenv.config();

@@ -1,9 +1,16 @@
-import { get } from 'axios';
-import Charity from '../models/Charity';
-import Donation from '../models/Donation';
+import get from 'axios';
+import Charity from '../models/Charity.js';
+import Donation from '../models/Donation.js';
+import User from '../models/User.js';
 
 const resolvers = {
   Query: {
+    users: async () => {
+      return User.find().populate('thoughts');
+    },
+    user: async (parent, { username }) => {
+      return User.findOne({ username }).populate('thoughts');
+    },
     charities: async ({ category: charityCategory }) => {
       const filter = charityCategory ? { category: charityCategory } : {};
       return await Charity.find(filter);
@@ -39,6 +46,30 @@ const resolvers = {
   },
 
   Mutation: {
+    addUser: async (parent, args) => {
+      const user = await User.create(args);
+      const token = signToken(user);
+
+      return { token, user };
+    },
+
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
+
+      if (!user) {
+        throw AuthenticationError
+      }
+
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw AuthenticationError
+      }
+
+      const token = signToken(user);
+      return { token, user };
+    },
+
     addCharity: async ({ name, description, goalAmount, category }) => {
       const charity = new Charity({ name, description, goalAmount, category });
       return await charity.save();

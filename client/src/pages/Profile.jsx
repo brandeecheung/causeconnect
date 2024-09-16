@@ -1,5 +1,5 @@
-// DonationHistory.js
-// import './DonationHistory.css'; // Import the stylesheet if you need styling
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const user = {
   name: 'John Doe',
@@ -37,37 +37,50 @@ const donations = [
 
 export default function Profile() {
   return (
-    <div className="profile-section">
+    <div className="container mt-5">
       {/* Profile Section */}
-      <div className="profile-info">
-        <img className="pfp" src={user.profilePicture} alt={`${user.name}'s Profile`} />
-        <div className="user-details">
-          <h2>{user.name}</h2>
-          <p>{user.email}</p>
+      <div className="card mb-4">
+        <div className="row no-gutters">
+          <div className="col-md-4 text-center p-3">
+            <img 
+              className="img-fluid rounded-circle" 
+              src={user.profilePicture} 
+              alt={`${user.name}'s Profile`} 
+              style={{ width: '150px', height: '150px' }} 
+            />
+          </div>
+          <div className="col-md-8">
+            <div className="card-body">
+              <h3 className="card-title">{user.name}</h3>
+              <p className="card-text">{user.email}</p>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Donation History Section */}
-      <div className="donation-history">
-        <h2>Your Donation History</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Charity</th>
-              <th>Donation Amount</th>
-              <th>Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            {donations.map((donation, index) => (
-              <tr key={index}>
-                <td>{donation.charity}</td>
-                <td>${donation.amount.toFixed(2)}</td>
-                <td>{new Date(donation.date).toLocaleDateString()}</td>
+      <div className="card">
+        <div className="card-body">
+          <h3>Your Donation History</h3>
+          <table className="table table-striped mt-3">
+            <thead className="thead-dark">
+              <tr>
+                <th>Charity</th>
+                <th>Donation Amount</th>
+                <th>Date</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {donations.map((donation, index) => (
+                <tr key={index}>
+                  <td>{donation.charity}</td>
+                  <td>${donation.amount.toFixed(2)}</td>
+                  <td>{new Date(donation.date).toLocaleDateString()}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
