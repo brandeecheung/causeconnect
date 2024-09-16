@@ -1,17 +1,27 @@
 import { Schema, model } from 'mongoose';
 
 const charitySchema = new Schema({
-  name: {
-    type: String,
+organizations: [{
+  name: String,
+  id: Number,
+  required: true,
+  address: [{
+    addressLine1: String,
+    addressLine2: String,
+    city: String,
+    state: String,
+    postal: String,
+    country: String,
     required: true,
-  },
-  description: String,
-  goalAmount: Number,
-  amountRaised: {
-    type: Number,
-    default: 0,
-  },
-  category: String, // Example: Education, Health, Environment
+  }],
+  info: [{
+  logoUrl: String,
+  mission: String,
+  themes: String,
+  url: String,
+  required: true,
+  }],
+}],
 });
 
 export default model('Charity', charitySchema);

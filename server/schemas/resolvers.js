@@ -2,6 +2,7 @@ import get from 'axios';
 import Charity from '../models/Charity.js';
 import Donation from '../models/Donation.js';
 import User from '../models/User.js';
+import globalGivingAPI from '../../src/utils/globalGivingAPI.js';
 
 const resolvers = {
   Query: {
