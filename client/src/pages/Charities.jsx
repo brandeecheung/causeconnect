@@ -1,3 +1,4 @@
+import React from "react";
 import { useQuery } from "@apollo/client";
 import CharityList from "../components/CharityList";
 import { QUERY_CHARITIES } from "../utils/queries";

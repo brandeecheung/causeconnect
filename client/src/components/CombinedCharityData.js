@@ -1,3 +1,4 @@
+import React from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_COMBINED_CHARITY_DATA } from '../utils/queries';
 import PropTypes from 'prop-types';

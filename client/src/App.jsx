@@ -1,3 +1,4 @@
+import React from 'react';
 import { ApolloProvider, InMemoryCache, ApolloClient } from '@apollo/client';
 import { Outlet } from 'react-router-dom';
 import Nav from './components/Nav';
