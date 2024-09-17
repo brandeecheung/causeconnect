@@ -22,6 +22,7 @@ const typeDefs = `
     goalAmount: Float
     amountRaised: Float
     category: String
+    externalCharity: ExternalCharity
   }
 
   type Donation {
@@ -30,6 +31,26 @@ const typeDefs = `
     amount: Float!
     charity: Charity!
     donationDate: String!
+  }
+
+  type ExternalCharity {
+  id: Int!
+    name: String!
+    mission: String
+    activeProjects: Int
+    totalProjects: Int
+    addressLine1: String
+    addressLine2: String
+    city: String
+    state: String
+    postal: String
+    country: String
+    iso3166CountryCode: String
+    ein: String
+    logoUrl: String
+    url: String
+    themes: [String]
+    countries: [String]
   }
 
   # Define the type for the external API data
@@ -43,7 +64,9 @@ const typeDefs = `
     charities(category: String): [Charity]
     charity(_id: ID!): Charity
     donations(charityId: ID!): [Donation]
-    externalCharityData(charityName: String!): ExternalCharity
+    externalCharity(charityName: String!): ExternalCharity
+    combinedCharityData(charityId: ID!): CombinedCharityData
+    user: [User]
   }
 
   type Mutation {
@@ -54,6 +77,12 @@ const typeDefs = `
     updateCharity(_id: ID!, name: String, description: String, goalAmount: Float, amountRaised: Float, category: String): Charity
     deleteCharity(_id: ID!): Charity
   }
+
+  type Thought {
+  id: ID!
+  text: String!
+  
+}
 `;
 
 export default typeDefs;

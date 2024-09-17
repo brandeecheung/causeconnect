@@ -5,9 +5,7 @@ import User from '../models/User.js';
 
 const resolvers = {
   Query: {
-    users: async () => {
-      return User.find().populate('thoughts');
-    },
+
     user: async (parent, { username }) => {
       return User.findOne({ username }).populate('thoughts');
     },
@@ -19,7 +17,7 @@ const resolvers = {
     donations: async (_, { charityId }) => {
       return await Donation.find({ charity: charityId }).populate('charity');
     },
-    externalCharityData: async ({ charityName }) => {
+    externalCharity: async ({ charityName }) => {
       try {
         const { data } = await get(`https://api.example.com/charity/${charityName}`);
         return data;
