@@ -14,8 +14,12 @@ body {
   padding: 0;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   color: rgb(255, 255, 255);
-  background-color: var(--dark);
+  background-color: #FAF9F6;
   line-height: 1.5;
+  background-image: url(https://png.pngtree.com/thumb_back/fh260/back_our/20190614/ourmid/pngtree-love-charity-poster-background-material-image_122259.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /* header styles */
@@ -283,4 +287,49 @@ main {
     align-items: flex-start;
   }
   
+}
+/*start of Bens CSS*/
+
+.abt-us {
+  text-align: center;
+  border: 2px solid var(--secondary);
+  background-color: var(--primary);
+  padding: 0 0 20px 0;
+  margin: 0.5em;
+    display: flex;
+  align-items: flex-end;
+  width: 50%;
+}
+
+.orng{
+  background-color: rgb(196, 139, 55);
+}
+
+.name {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-decoration: underline;
+  font-size: 50px;
+  margin-left: 42%;
+  color: black;
+  background-color: ;
+  margin-bottom: 25px;
+}
+
+.donate {
+  background-image: url("https://t3.ftcdn.net/jpg/04/07/88/00/360_F_407880054_fdbzTfwmIBaDmb84pg4hDJ3rb1ezRpZw.jpg");
+    background-position: center;
+}
+
+.events {
+  background-image: url(https://imageio.forbes.com/specials-images/imageserve/61c1d658170ebe018990edcc/Volunteers-working-in-soup-kitchen/960x0.jpg?height=473&width=711&fit=bounds);
+  background-position: center;
+}
+
+.impact {
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWvKKV_bgEByZmSd0KEmMEYx1VjhnGB2o2k5iFeZswaz3zlwTM6PtTLdyIVMefvcDGwbw&usqp=CAU);
+  background-position: center;
+}
+
+footer {
+margin-top: 20px;
 }
