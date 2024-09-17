@@ -1,6 +1,6 @@
 const { Project, Charity, User } = require('../models');
 const { signToken } = require('../utils/auth');
-const globalGivingAPI = require('../utils/globalGivingAPI');
+const API = require('../utils/API');
 
 module.exports = {
   // Fetch all projects
@@ -114,9 +114,9 @@ module.exports = {
   },
 
   // Fetch all projects from GlobalGiving API
-  async fetchAllOrgProjects(req, res) {
+  async fetchAllOrgProjectsFromAPI(req, res) {
     try {
-      const data = await globalGivingAPI.fetchAllOrgProjects();
+      const data = await fetchAllOrgProjects();
       res.json(data);
     } catch (error) {
       console.error('Error fetching projects from GlobalGiving API:', error);
@@ -127,7 +127,7 @@ module.exports = {
   // Fetch all organizations from GlobalGiving API
   async fetchAllOrganizationsFromAPI(req, res) {
     try {
-      const data = await globalGivingAPI.fetchAllOrganizations();
+      const data = await fetchAllOrganizations();
       res.json(data);
     } catch (error) {
       console.error('Error fetching organizations from GlobalGiving API:', error);

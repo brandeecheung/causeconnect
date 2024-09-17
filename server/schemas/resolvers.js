@@ -1,8 +1,7 @@
-import get from 'axios';
+import { get } from 'axios';
 import Charity from '../models/Charity.js';
 import Donation from '../models/Donation.js';
 import User from '../models/User.js';
-import globalGivingAPI from '../../src/utils/globalGivingAPI.js';
 
 const resolvers = {
   Query: {
@@ -12,40 +11,26 @@ const resolvers = {
     user: async (parent, { username }) => {
       return User.findOne({ username }).populate('thoughts');
     },
-    charities: async ({ category: charityCategory }) => {
+    charities: async (parent, { category: charityCategory }) => {
       const filter = charityCategory ? { category: charityCategory } : {};
       return await Charity.find(filter);
     },
-    charity: async ({ _id }) => Charity.findById(_id),
-    donations: async (_, { charityId }) => {
+    charity: async (parent, { _id }) => {
+      return Charity.findById(_id);
+    },
+    donations: async (parent, { charityId }) => {
       return await Donation.find({ charity: charityId }).populate('charity');
     },
-    externalCharityData: async ({ charityName }) => {
-      try {
-        const { data } = await get(`https://api.example.com/charity/${charityName}`);
-        return data;
-      } catch (error) {
-        throw new Error(`Failed to fetch external data for ${charityName}`, error);
-      }
+    projects: async () => {
+      return await Project.find();
     },
-    combinedCharityData: async ({ charityId }) => {
-      try {
-        const [charityResponse, donationResponse] = await Promise.all([
-          get(`https://api1.com/charities/${charityId}`),
-          get(`https://api2.com/charities/${charityId}/donations`),
-        ]);
-
-        return {
-          charityName: charityResponse.data.name,
-          charityDescription: charityResponse.data.description,
-          donations: donationResponse.data.donations,
-        };
-      } catch (error) {
-        throw new Error(`Failed to fetch combined data for ${charityId}`, error);
-      }
+    project: async (parent, { _id }) => {
+      return await Project.findById(_id);
     },
   },
+};
 
+module.exports = resolvers;
   Mutation: {
     addUser: async (parent, args) => {
       const user = await User.create(args);
@@ -109,8 +94,9 @@ const resolvers = {
 
       return charity;
     },
-  }
-}
+  },
+};
+
 
 export default resolvers;
 

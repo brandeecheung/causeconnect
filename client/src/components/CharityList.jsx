@@ -1,5 +1,5 @@
 import React from 'react';  
-import { useQuery, useNavigate } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { QUERY_CHARITIES } from "../utils/queries";
 import { Container, Row, Col, Card, ProgressBar } from 'react-bootstrap';
 
@@ -11,8 +11,6 @@ function CharityList() {
   if (!charities.length) {
     return <h3>No Charities Found</h3>;
   }
-
-   const navigate = useNavigate();
 
   return (
     <main className="py-5">
