@@ -11,12 +11,23 @@ import resolvers from './schemas/resolvers.js';
 
 // Load environment variables
 dotenv.config();
+console.log('MONGODB_URI:', process.env.MONGODB_URI);  // Debug: Check if URI is being loaded
+
 const PORT = process.env.PORT || 4000;
 const app = express();
 
 // Connect to MongoDB
+// Connect to MongoDB
 const mongoUrl = process.env.MONGODB_URI;
-mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true, })
+
+if (!mongoUrl) {
+  throw new Error('MONGODB_URI is not defined in the environment variables.');
+}
+
+mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('Connected to MongoDB'))
+  .catch(err => console.error('Error connecting to MongoDB:', err));
+
 
 // Create Apollo Server
 const server = new ApolloServer({ typeDefs, resolvers });
