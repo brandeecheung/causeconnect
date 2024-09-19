@@ -15,6 +15,9 @@ console.log('MONGODB_URI:', config.db);  // Debug: Check if URI is being loaded
 const PORT = config.port || 4000;
 const app = express();
 
+console.log('MONGODB_URI:', process.env.MONGODB_URI);
+console.log('MONGODB_URI_RENDER:', process.env.MONGODB_URI_RENDER);
+
 // Connect to MongoDB using the config file
 mongoose.connect(process.env.MONGODB_URI_RENDER || config.db.localURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to MongoDB'))
