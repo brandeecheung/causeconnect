@@ -30,6 +30,14 @@ const startServer = async () => {
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
 
+  if (process.env.NODE_ENV.includes('production')) {
+    app.use(express.static(path.join(__dirname, '../client/dist')));
+
+    app.get('*', (req, res) => {
+      res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+    });
+  }
+
   await server.start();
   const middleware = expressMiddleware(server);
   app.use('/graphql', middleware);
