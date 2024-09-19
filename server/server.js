@@ -6,17 +6,17 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import typeDefs from './schemas/typeDefs.js';
 import resolvers from './schemas/resolvers.js';
-import { config } from './config/config.js'; // Named import
-
+import { appconfig } from './config/config.js'; // Named import
+const config = appconfig; // Destructure the config object
 // Load environment variables
 dotenv.config();
-console.log('MONGODB_URI:', config.db.localURI);  // Debug: Check if URI is being loaded
+console.log('MONGODB_URI:', config.db);  // Debug: Check if URI is being loaded
 
 const PORT = config.port || 4000;
 const app = express();
 
 // Connect to MongoDB using the config file
-mongoose.connect(config.db.localURI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGODB_URI_RENDER || config.db.localURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('Error connecting to MongoDB:', err));
 
