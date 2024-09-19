@@ -7,6 +7,8 @@ import dotenv from 'dotenv';
 import typeDefs from './schemas/typeDefs.js';
 import resolvers from './schemas/resolvers.js';
 import { appconfig } from './config/config.js'; // Named import
+import path from 'path';
+
 const config = appconfig; // Destructure the config object
 // Load environment variables
 dotenv.config();
